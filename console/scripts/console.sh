@@ -2,7 +2,7 @@
 
 clear
 
-export PYTHONPATH=../../../src:.
+export PYTHONPATH=/opt/program-y/src
 
-python3 ../../../src/programy/clients/events/console/client.py --config ./config.yaml --cformat yaml --logging ../../y-bot/logging.yaml
+python3 -m programy.clients.events.console.client --config ../config/xnix/config.yaml --cformat yaml --logging ../../config/xnix/logging.yaml
 
