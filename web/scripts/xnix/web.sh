@@ -2,7 +2,10 @@
 
 clear
 
-export PYTHONPATH=../../../src:.
+if [ -z "${PYTHONPATH}" ]; then
+  echo "PYTHONPATH is undefined"
+  exit
+fi
 
-python3 ../../../src/programy/clients/restful/flask/webchat/client.py --config ./config.yaml --cformat yaml --logging ../../y-bot/logging.yaml
+python3 -m programy.clients.restful.flask.webchat.client --config ../../config/xnix/config.yaml --cformat yaml --logging ../../../config/xnix/logging.yaml
 

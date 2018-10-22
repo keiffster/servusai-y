@@ -4,7 +4,7 @@
 
 export PYTHONPATH=/opt/program-y/src:.
 
-cd /opt/program-y
+cd /opt/servusai-y/web/scripts/xnix
 
-python3 /opt/program-y/src/programy/clients/restful/flask/webchat/client.py --config /opt/program-y/bots/servusai/web/config.yaml --cformat yaml --logging /opt/program-y/bots/y-bot/logging.yaml
+python3 -m programy.clients.restful.flask.webchat.client --config ../../config/xnix/config.yaml --cformat yaml --logging ../../../config/xnix/logging.yaml
 

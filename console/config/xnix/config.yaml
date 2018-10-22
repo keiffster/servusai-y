@@ -86,3 +86,11 @@ brain:
       save-errors: true
       save-duplicates: true
 
+    services:
+        PROGRAMY:
+            classname: programy.services.programy.ProgramyRESTService
+            method: GET
+            host: 127.0.0.1
+            port: 8989
+            url: /api/rest/v1.0/ask
+
