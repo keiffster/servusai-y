@@ -4,7 +4,7 @@ REST
     /api/rest/v1.0/ask
 
 Web
-    443 -> 8080
+    443 -> 8888
     /api/web/v1.0/ask
 
 Facebook

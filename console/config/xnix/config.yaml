@@ -32,9 +32,9 @@ console:
                   file: ../../storage/properties/properties.txt
 
                 pattern_nodes_storage:
-                  file: ../../storage/nodes/pattern_nodes.conf
+                  file: ../../../../y-bot/storage/nodes/pattern_nodes.conf
                 template_nodes_storage:
-                  file: ../../storage/nodes/template_nodes.conf
+                  file: ../../../../y-bot/storage/nodes/template_nodes.conf
 
                 preprocessors_storage:
                   file: ../../storage/processing/preprocessors.conf
