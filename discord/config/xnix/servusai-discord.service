@@ -1,0 +1,11 @@
+[Unit]
+Description=Y-Bot alexa Client
+
+[Service]
+User=ubuntu
+ExecStart=/opt/program-y/bots/servusai/alexa/servusai-alexa.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

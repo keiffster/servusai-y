@@ -1,0 +1,11 @@
+[Unit]
+Description=Y-Bot microsoft Client
+
+[Service]
+User=ubuntu
+ExecStart=/opt/program-y/bots/servusai/microsoft/servusai-microsoft.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,69 +1,86 @@
-bot:
-
-    prompt: ">>>"
-
-    initial_question: Hi, how can I help you today?
-    default_response: Sorry, I don't have an answer for that!
-    default_response_srai: YEMPTY
-    empty_string: YEMPTY
-    exit_response: So long, and thanks for the fish!
-    exit_response_srai: YEXITRESPONSE
-
-    override_properties: true
-
-    max_question_recursion: 1000
-    max_question_timeout: 60
-    max_search_depth: 100
-    max_search_timeout: 60
-
-    conversations:
-      type: file
-      config_name: file_storage
-      empty_on_start: true
-
-    file_storage:
-      dir: $BOT_ROOT/conversations
-
-brain:
-
-    # Overrides
-    overrides:
-      allow_system_aiml: false
-      allow_learn_aiml: false
-      allow_learnf_aiml: false
-
-    # Defaults
-    defaults:
-      default-get: unknown
-      default-property: unknown
-      default-map: unknown
-
-    # Nodes
-    nodes:
-      pattern_nodes: $BOT_ROOT/config/pattern_nodes.conf
-      template_nodes: $BOT_ROOT/config/template_nodes.conf
-
-    files:
-        aiml:
-            files: $BOT_ROOT/aiml
-            extension: .aiml
-            directories: true
-            conversation:
-              file: /tmp/multibot-conversation.csv
-              format: csv
-              delete_on_start: true
-        properties: $BOT_ROOT/config/properties.txt
-        preprocessors: $BOT_ROOT/config/preprocessors.conf
-        postprocessors: $BOT_ROOT/config/postprocessors.conf
-
-    services:
-        PROGRAMY:
-            classname: programy.services.programy.ProgramyRESTService
-            method: GET
-            host: 127.0.0.1
-            port: 8989
-            url: /api/rest/v1.0/ask
-
 telegram:
   unknown_command: Sorry, that is not a command I have been taught yet!
-  license_keys: $BOT_ROOT/config/license.keys
+
+  storage:
+      entities:
+          categories: file
+          errors: file
+          duplicates: file
+          properties: file
+          template_nodes: file
+          pattern_nodes: file
+          preprocessors: file
+          postprocessors: file
+
+      stores:
+
+          file:
+              type:   file
+              config:
+                categories_storage:
+                  dirs: ../../storage/categories
+                  subdirs: true
+                  extension: .aiml
+                errors_storage:
+                  file: ../../storage/debug/errors.txt
+                duplicates_storage:
+                  file: ../../storage/debug/duplicates.txt
+
+                properties_storage:
+                  file: ../../storage/properties/properties.txt
+
+                pattern_nodes_storage:
+                  file: ../../../../y-bot/storage/nodes/pattern_nodes.conf
+                template_nodes_storage:
+                  file: ../../../../y-bot/storage/nodes/template_nodes.conf
+
+                preprocessors_storage:
+                  file: ../../storage/processing/preprocessors.conf
+                postprocessors_storage:
+                  file: ../../storage/processing/postprocessors.conf
+
+  bots:
+    bot:
+        initial_question: Hi, how can I help you today?
+        default_response: Sorry, I don't have an answer for that!
+        exit_response: So long, and thanks for the fish!
+
+        override_properties: true
+
+        max_question_recursion: 1000
+        max_question_timeout: 60
+        max_search_depth: 100
+        max_search_timeout: 60
+
+      brains:
+        brain:
+
+            # Overrides
+            overrides:
+              allow_system_aiml: true
+              allow_learn_aiml: true
+              allow_learnf_aiml: true
+
+            # Defaults
+            defaults:
+              default_get: unknown
+              default_property: unknown
+              default_map: unknown
+
+            # Binary
+            binaries:
+              save_binary: false
+              load_binary: false
+              load_aiml_on_binary_fail: false
+
+            debugfiles:
+              save-errors: true
+              save-duplicates: true
+
+            services:
+                PROGRAMY:
+                    classname: programy.services.programy.ProgramyRESTService
+                    method: GET
+                    host: 127.0.0.1
+                    port: 8989
+                    url: /api/rest/v1.0/ask

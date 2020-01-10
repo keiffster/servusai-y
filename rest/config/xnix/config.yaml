@@ -170,9 +170,9 @@ brain:
 
     # Defaults
     defaults:
-      default-get: unknown
-      default-property: unknown
-      default-map: unknown
+      default_get: unknown
+      default_property: unknown
+      default_map: unknown
 
     # Binary
     binaries:

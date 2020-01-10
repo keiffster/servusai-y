@@ -1,0 +1,11 @@
+[Unit]
+Description=Y-Bot google Client
+
+[Service]
+User=ubuntu
+ExecStart=/opt/program-y/bots/servusai/google/servusai-google.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

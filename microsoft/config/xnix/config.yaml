@@ -1,8 +1,8 @@
-webchat:
+microsoft:
+  description: Program-Y Microsoft Client
   host: 127.0.0.1
-  port: 8888
-  debug: false
-  
+  port: 9000
+
   storage:
       entities:
           categories: file

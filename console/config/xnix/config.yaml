@@ -41,56 +41,49 @@ console:
                 postprocessors_storage:
                   file: ../../storage/processing/postprocessors.conf
 
-#####################################################################################################
-#
+  bots:
+    bot:
+        initial_question: Hi, how can I help you today?
+        default_response: Sorry, I don't have an answer for that!
+        exit_response: So long, and thanks for the fish!
 
-bot:
-    brain: brain
+        override_properties: true
 
-    initial_question: Hi, how can I help you today?
-    default_response: Sorry, I don't have an answer for that!
-    exit_response: So long, and thanks for the fish!
+        max_question_recursion: 1000
+        max_question_timeout: 60
+        max_search_depth: 100
+        max_search_timeout: 60
 
-    override_properties: true
+      brains:
+        brain:
 
-    max_question_recursion: 1000
-    max_question_timeout: 60
-    max_search_depth: 100
-    max_search_timeout: 60
+            # Overrides
+            overrides:
+              allow_system_aiml: true
+              allow_learn_aiml: true
+              allow_learnf_aiml: true
 
+            # Defaults
+            defaults:
+              default_get: unknown
+              default_property: unknown
+              default_map: unknown
 
-#####################################################################################################
-#
+            # Binary
+            binaries:
+              save_binary: false
+              load_binary: false
+              load_aiml_on_binary_fail: false
 
-brain:
+            debugfiles:
+              save-errors: true
+              save-duplicates: true
 
-    # Overrides
-    overrides:
-      allow_system_aiml: true
-      allow_learn_aiml: true
-      allow_learnf_aiml: true
-
-    # Defaults
-    defaults:
-      default-get: unknown
-      default-property: unknown
-      default-map: unknown
-
-    # Binary
-    binaries:
-      save_binary: false
-      load_binary: false
-      load_aiml_on_binary_fail: false
-
-    debugfiles:
-      save-errors: true
-      save-duplicates: true
-
-    services:
-        PROGRAMY:
-            classname: programy.services.programy.ProgramyRESTService
-            method: GET
-            host: 127.0.0.1
-            port: 8989
-            url: /api/rest/v1.0/ask
+            services:
+                PROGRAMY:
+                    classname: programy.services.programy.ProgramyRESTService
+                    method: GET
+                    host: 127.0.0.1
+                    port: 8989
+                    url: /api/rest/v1.0/ask
 

@@ -1,8 +1,17 @@
-webchat:
+alexa:
+  description: Program-Y Alexa Client
   host: 127.0.0.1
-  port: 8888
-  debug: false
-  
+  port: 5001
+  debug: False
+  api: /api/alexa/v1.0/ask
+  launch_text: Hello and welcome
+  #launch_srai: ALEXA_LAUNCH
+  session_end_text:  Good bye matey
+  #session_end_srai: ALEXA_END
+  error_text: Oopsie there has been an error
+  #error_srai: ALEXA_ERROR
+  leave_intent: LeaveIntent
+
   storage:
       entities:
           categories: file

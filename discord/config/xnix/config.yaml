@@ -1,8 +1,6 @@
-webchat:
-  host: 127.0.0.1
-  port: 8888
-  debug: false
-  
+discord:
+  description: Program-Y Discord Client
+
   storage:
       entities:
           categories: file
