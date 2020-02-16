@@ -4,85 +4,85 @@ line:
   debug: false
 
   storage:
-      entities:
-          categories: file
-          errors: file
-          duplicates: file
-          properties: file
-          template_nodes: file
-          pattern_nodes: file
-          preprocessors: file
-          postprocessors: file
+    entities:
+      categories: file
+      errors: file
+      duplicates: file
+      properties: file
+      template_nodes: file
+      pattern_nodes: file
+      preprocessors: file
+      postprocessors: file
 
-      stores:
+    stores:
 
-          file:
-              type:   file
-              config:
-                categories_storage:
-                  dirs: ../../storage/categories
-                  subdirs: true
-                  extension: .aiml
-                errors_storage:
-                  file: ../../storage/debug/errors.txt
-                duplicates_storage:
-                  file: ../../storage/debug/duplicates.txt
+      file:
+        type:   file
+        config:
+          categories_storage:
+            dirs: ../../storage/categories
+            subdirs: true
+            extension: .aiml
+          errors_storage:
+            file: ../../storage/debug/errors.txt
+          duplicates_storage:
+            file: ../../storage/debug/duplicates.txt
 
-                properties_storage:
-                  file: ../../storage/properties/properties.txt
+          properties_storage:
+            file: ../../storage/properties/properties.txt
 
-                pattern_nodes_storage:
-                  file: ../../../../y-bot/storage/nodes/pattern_nodes.conf
-                template_nodes_storage:
-                  file: ../../../../y-bot/storage/nodes/template_nodes.conf
+          pattern_nodes_storage:
+            file: ../../../../y-bot/storage/nodes/pattern_nodes.conf
+          template_nodes_storage:
+            file: ../../../../y-bot/storage/nodes/template_nodes.conf
 
-                preprocessors_storage:
-                  file: ../../storage/processing/preprocessors.conf
-                postprocessors_storage:
-                  file: ../../storage/processing/postprocessors.conf
+          preprocessors_storage:
+            file: ../../storage/processing/preprocessors.conf
+          postprocessors_storage:
+            file: ../../storage/processing/postprocessors.conf
 
   bots:
     bot:
-        initial_question: Hi, how can I help you today?
-        default_response: Sorry, I don't have an answer for that!
-        exit_response: So long, and thanks for the fish!
+      initial_question: Hi, how can I help you today?
+      default_response: Sorry, I don't have an answer for that!
+      exit_response: So long, and thanks for the fish!
 
-        override_properties: true
+      override_properties: true
 
-        max_question_recursion: 1000
-        max_question_timeout: 60
-        max_search_depth: 100
-        max_search_timeout: 60
+      max_question_recursion: 1000
+      max_question_timeout: 60
+      max_search_depth: 100
+      max_search_timeout: 60
 
       brains:
         brain:
 
-            # Overrides
-            overrides:
-              allow_system_aiml: true
-              allow_learn_aiml: true
-              allow_learnf_aiml: true
+          # Overrides
+          overrides:
+            allow_system_aiml: true
+            allow_learn_aiml: true
+            allow_learnf_aiml: true
 
-            # Defaults
-            defaults:
-              default_get: unknown
-              default_property: unknown
-              default_map: unknown
+          # Defaults
+          defaults:
+            default_get: unknown
+            default_property: unknown
+            default_map: unknown
 
-            # Binary
-            binaries:
-              save_binary: false
-              load_binary: false
-              load_aiml_on_binary_fail: false
+          # Binary
+          binaries:
+            save_binary: false
+            load_binary: false
+            load_aiml_on_binary_fail: false
 
-            debugfiles:
-              save-errors: true
-              save-duplicates: true
+          debugfiles:
+            save-errors: true
+            save-duplicates: true
 
-            services:
-                PROGRAMY:
-                    classname: programy.services.programy.ProgramyRESTService
-                    method: GET
-                    host: 127.0.0.1
-                    port: 8989
-                    url: /api/rest/v1.0/ask
+          services:
+            PROGRAMY:
+              classname: programy.services.programy.ProgramyRESTService
+              method: GET
+              host: 127.0.0.1
+              port: 8989
+              url: /api/rest/v1.0/ask
